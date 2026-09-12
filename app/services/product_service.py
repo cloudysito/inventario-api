@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 
 from app.models import Product
+from app.repositories.product_repository import ProductRepository
 from app.schemas import ProductCreate
-from repositories.product_repository import ProductRepository
 
 
 def list_products(db: Session) -> list[Product]:
