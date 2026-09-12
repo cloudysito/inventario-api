@@ -2,20 +2,19 @@ from sqlalchemy.orm import Session
 
 from app.models import Product
 from app.schemas import ProductCreate
-from repositories import product_repository
+from repositories.product_repository import ProductRepository
 
 
 def list_products(db: Session) -> list[Product]:
-    return product_repository.list_all(db)
+    return ProductRepository(db).list_all()
 
 
 def get_product(db: Session, id: int) -> Product | None:
-    return product_repository.get_by_id(db, id)
+    return ProductRepository(db).get_by_id(id)
 
 
 def create_product(db: Session, product: ProductCreate) -> Product:
-    return product_repository.create(
-        db,
+    return ProductRepository(db).create(
         name=product.name,
         price=product.price,
         category=product.category,
@@ -24,9 +23,10 @@ def create_product(db: Session, product: ProductCreate) -> Product:
 
 
 def apply_discount(db: Session, id: int, percentage: float) -> Product | None:
-    product = product_repository.get_by_id(db, id)
+    repo = ProductRepository(db)
+    product = repo.get_by_id(id)
     if product is None:
         return None
 
     product.price = product.price * (1 - percentage / 100)
-    return product_repository.save_changes(db, product)
+    return repo.save_changes(product)
