@@ -1,6 +1,7 @@
 import csv
-import requests
 from dataclasses import dataclass, field
+
+import requests
 
 
 @dataclass
