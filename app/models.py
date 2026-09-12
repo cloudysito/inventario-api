@@ -4,11 +4,11 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.database import Base
 
 
-class Productos(Base):
-    __tablename__ = "productos"
+class Product(Base):
+    __tablename__ = "products"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    nombre: Mapped[str] = mapped_column(String)
-    precio: Mapped[float] = mapped_column(Float)
-    categoria: Mapped[str] = mapped_column(String)
+    name: Mapped[str] = mapped_column(String)
+    price: Mapped[float] = mapped_column(Float)
+    category: Mapped[str] = mapped_column(String)
     stock: Mapped[int] = mapped_column(Integer, default=0)

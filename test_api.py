@@ -3,27 +3,27 @@ from main import app
 
 client = TestClient(app)
 
-def test_get_productos_responde_200():
-    response = client.get("/productos/")
+
+def test_get_products_returns_200():
+    response = client.get("/products/")
     assert response.status_code == 200
 
 
-def test_post_crear_producto_devuelve_nombre_correcto():
+def test_post_create_product_returns_correct_name():
     payload = {
-        "nombre": "Producto Pytest",
-        "precio": 99.9,
-        "categoria": "Testing",
+        "name": "Pytest Product",
+        "price": 99.9,
+        "category": "Testing",
         "stock": 5,
     }
 
-    response = client.post("/productos/", json=payload)
+    response = client.post("/products/", json=payload)
 
     assert response.status_code == 200
     data = response.json()
-    assert data["nombre"] == payload["nombre"]
+    assert data["name"] == payload["name"]
 
 
-def test_get_producto_inexistente_responde_404():
-    response = client.get("/productos/999")
+def test_get_nonexistent_product_returns_404():
+    response = client.get("/products/999")
     assert response.status_code == 404
-
