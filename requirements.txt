@@ -6,5 +6,6 @@ requests==2.32.5
 pytest==9.0.2
 httpx==0.28.1
 passlib[bcrypt]==1.7.4
+bcrypt<5
 python-jose[cryptography]==3.5.0
 python-dotenv==1.2.3
