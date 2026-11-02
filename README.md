@@ -2,16 +2,20 @@
 
 REST API for product inventory management, built with FastAPI, SQLAlchemy and a layered architecture (Repository → Service → Router).
 
-## Features (working)
+## Features
 - ✅ List all products
 - ✅ Get product by ID
 - ✅ Create a new product
+- ✅ Update a product
+- ✅ Delete a product
 - ✅ Apply a percentage discount to a product
 
-## In progress
-- ⏳ Update product (schema ready, endpoint pending)
-- ⏳ Delete product
-- ⏳ Test coverage
+## Tests
+Run the test suite with:
+
+```bash
+pytest
+```
 
 ## Tech Stack
 - FastAPI
